@@ -1,0 +1,23 @@
+<md-table breakpoint="640" columns="5" alt-background="odd" class="orders">
+    <header>
+        <column-header>Item</column-header>
+        <column-header>Sku</column-header>
+        <column-header>Price</column-header>
+        <column-header>Quantity</column-header>
+        <column-header>Total</column-header>
+    </header>
+    <section class="size-14">
+      {#items}
+          <grid-item data-header="Item">
+              <span class="medium">{name}</span>
+            {#description}
+                <p>{key}: {value}</p>
+            {/description}
+          </grid-item>
+          <grid-item data-header="Desc">{sku}</grid-item>
+          <grid-item data-header="Price">{@extFormatCurrency value="{subtotal}" /}</grid-item>
+          <grid-item data-header="Quantity">{quantity}</grid-item>
+          <grid-item data-header="Total">{@extFormatCurrency value="{total}" /}</grid-item>
+      {/items}
+    </section>
+</md-table>

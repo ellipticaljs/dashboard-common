@@ -1,0 +1,9 @@
+{?StatisticsGraph}
+<db-component name="Statistics" subtitle="Graph" service="StatisticsGraph">
+    <db-settings content-init>
+        <menu-item><a action="google">Google Analytics</a></menu-item>
+        <menu-item><a action="hide">Hide</a></menu-item>
+    </db-settings>
+    <db-barchart service="StatisticsGraph" content-init ea-bind="stats-graph"></db-barchart>
+</db-component>
+{/StatisticsGraph}

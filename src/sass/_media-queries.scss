@@ -1,0 +1,271 @@
+///media queries---------------------------------------------------
+
+
+///desktop
+@include large-content() {
+  .flex-cards{
+    @include flex-wrap(wrap);
+  }
+}
+
+@include media-breakpoint(1500px){
+  md-icon-card{
+    width:48%;
+  }
+}
+
+
+@include media-breakpoint(1400px){
+  md-grid{
+    font-size:14px;
+    @include span-icon{
+      font-size:18px;
+    }
+  }
+  side-panel{
+    max-width:100px;
+    min-width:100px !important;
+  }
+  .hide-for-large-screen-down{
+    display:none;
+  }
+  side-panel{
+    menu-item{
+      &>*{
+        display:none;
+      }
+      @include span-icon{
+        display:flex;
+        display:-webkit-flex;
+      }
+    }
+    .panel-title{
+      display:none;
+    }
+  }
+  .dashboard-box{
+    h1{
+      font-size:60px;
+    }
+  }
+  .hide-span-medium-down{
+    display:none;
+  }
+}
+
+
+
+///touch
+@include touch-content() {
+  .flex-cards{
+    @include flex-wrap(wrap);
+  }
+  .md-toolbar{
+    padding-right:1em;
+  }
+  side-panel{
+    max-width:75px;
+    min-width:75px !important;
+    menu-item{
+      &>*{
+        display:none;
+      }
+      @include span-icon{
+        display:flex;
+        display:-webkit-flex;
+      }
+
+    }
+  }
+  nav-list{
+    .header{
+      margin-left: -.25em;
+      &.large{
+        height:50px;
+        width:50px;
+        font-size:36px;
+      }
+    }
+  }
+  md-morph{
+    margin-right:auto;
+  }
+  .search-box{
+    width:220px;
+    margin-left:40px;
+    input[type=text]{
+      border:0 !important;
+      width:200px !important;
+      &:focus{
+        border:0 !important;
+        box-shadow:none !important;
+        &:not([readonly]){
+          border:0 !important;
+          box-shadow:none !important;
+        }
+      }
+      &::-webkit-input-placeholder {
+        opacity:0;
+      }
+      &::-moz-placeholder {
+        opacity:0;
+      }
+      &::-o-placeholder {
+        opacity:0;
+      }
+      &:-ms-input-placeholder {
+        opacity:0;
+      }
+    }
+    button{
+      border:0 !important
+    }
+    input[type=text]:focus:not([readonly]) + label + button {
+      border-bottom: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+  md-menu{
+    margin-top:1em;
+  }
+
+  .back-arrow{
+    margin-left:40px;
+  }
+  .dashboard-box{
+    h1{
+      font-size:60px;
+    }
+  }
+
+  h3{
+    font-size:1.7em;
+  }
+  [preload]{
+    &:after{
+      font-size:72px;
+      top:40%;
+      left:40%;
+    }
+  }
+}
+
+@include media-breakpoint(900px){
+  .billing-box,.delivery-box{
+    width:25% !important;
+  }
+}
+
+///medium
+@include tablet-content() {
+
+}
+
+@include media-breakpoint(768px){
+  .billing-box,.shipping-box{
+    width:40% !important;
+  }
+  .delivery-box{
+    width:100% !important;
+    margin:2em 0;
+  }
+  .detail-row,.order-header{
+    @include flex-wrap(wrap);
+    &>*{
+      width:40% !important;
+    }
+  }
+  .user-date{
+    display:none;
+  }
+}
+
+///small
+@include small-content() {
+  .flex-cards{
+    &>md-icon-card{
+      width:100%;
+    }
+  }
+  md-icon-card{
+    &:nth-of-type(3){
+      margin-bottom:1.5em;
+    }
+  }
+  .search-box {
+    width: 220px;
+    margin-left:0;
+  }
+  md-toolbar{
+    [data-profile-name],[data-settings]{
+      display:none;
+    }
+  }
+  db-breadcrumb .icon {
+    font-size:24px;
+  }
+  db-breadcrumb > flex-box {
+    font-size: 12px;
+  }
+  .dashboard-box{
+    h1{
+      font-size:40px;
+    }
+  }
+  .billing-box,.shipping-box{
+    width:50% !important;
+  }
+
+  h3{
+    font-size:1.25em;
+  }
+
+  [order-status]{
+    padding:.25em !important;
+    font-size:16px !important;
+    max-width:100px !important;
+  }
+  .order-total{
+    padding:.25em !important;
+    font-size:16px !important;
+    max-width:100px !important;
+  }
+  .order-details{
+    .total-box{
+      box-shadow:$md-depth-05;
+    }
+    .detail-row,.order-header{
+      margin-bottom:1em;
+      border-bottom:1px solid map-get($Color,disabled);
+      &>*{
+        width:90% !important;
+        margin-bottom:1em;
+      }
+    }
+    .order-header{
+      border-bottom:0;
+    }
+    .detail-row{
+      &:last-of-type{
+        padding-bottom:1em;
+      }
+    }
+  }
+  [preload]{
+    &:after{
+      font-size:48px;
+      top:40%;
+      left:40%;
+    }
+  }
+  md-datepicker.md{
+    margin-left:0 !important;
+    width:100%;
+    margin-top:1em;//
+  }
+}
+
+
+
+
+

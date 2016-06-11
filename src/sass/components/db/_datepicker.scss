@@ -1,0 +1,119 @@
+
+
+/// @access private
+@mixin _db-datepicker($map){
+  $_md-black-primary:$md-black-primary;
+
+  $_color:map-get-default($map,color,$_md-black-primary);
+  $_header-color:map-get-default($map,header-border,#9e9e9e);
+  $_header-border:map-get-default($map,header-border,#d8d8d8);
+  $_active-extend-color:map-get-default($map,active-extend-color,#4CAF50);
+  $_span-color:map-get-default($map,span-color,#757575);
+  $_placeholder-color:map-get-default($map,placeholder-color,$_md-black-primary);
+
+  db-datepicker{
+    display:block;
+    position:relative;
+    color:$_color;
+    font-size:14px;
+    header{
+      color:$_header-color;
+      padding:1em 1.5em 1em 1.5em;
+      font-size:14px;
+      border-bottom:1px solid $_header-border;
+      margin-bottom:1em;
+    }
+    .active{
+      color:$_active-extend-color;
+    }
+    main{
+      @include flexbox-column();
+      padding:1em 1.5em;
+      hr{
+        width:105%;
+        margin-right:-1em;
+      }
+      md-datepicker{
+        input{
+          &:hover{
+            cursor:pointer;
+          }
+        }
+      }
+      &>*{
+        width:100%;
+      }
+      &>flex-box{
+        &>span{
+          color:$_span-color;
+          width:50px;
+        }
+        [action]{
+          width:auto;
+          max-width:100px;
+          &:hover{
+            opacity:.7;
+            cursor:pointer;
+          }
+        }
+        [start-date],[end-date]{
+          margin-top:.2em;
+        }
+      }
+      flex-box.column{
+        width:100%;
+      }
+      @include input(){
+        &.native{
+          border-bottom:0 !important;
+          @include component-placeholder($_placeholder-color);
+          margin:0;
+          height:2.5em;
+          color:$_active-extend-color;
+          &:focus{
+            border:0;
+            box-shadow:none !important;
+          }
+          width:200px;
+          max-width:100%;
+        }
+      }
+      .native::-webkit-inner-spin-button,
+      .native::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
+
+
+
+/// @access public
+/// @require {Mixin} _db-datepicker - private mixin
+/// @param {Map} $map
+/// @prop {String} margin-top (-200px) - dialog datepicker margin-top
+/// @prop {String} color ($md-black-primary) - component color
+/// @prop {String} header-color (#9e9e9e) - header-color
+/// @prop {String} header-border (#d8d8d8) - header bottom border color
+/// @prop {String} active-extend-color (#4CAF50) - active font color
+/// @prop {String} span-color (#757575) - font color
+/// @prop {String} placeholder-color ($md-black-primary) - date placeholder color
+/// @content css
+/// @example
+///   db-datepicker($map:(active-extend-color:'.md.custom-element'));
+@mixin db-datepicker($map:()) {
+  $_top:map-get-default($map,margin-top,-200px);
+
+  @include _db-datepicker($map){
+    @content;
+  };
+
+  .db-datepicker{
+    #ui-datepicker-div{
+      margin-top:$_top;
+    }
+  }
+
+
+}

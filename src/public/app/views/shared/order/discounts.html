@@ -1,0 +1,18 @@
+<h3 class="margin-left">Discounts</h3>
+<md-table breakpoint="640" columns="3" alt-background="odd" class="orders">
+    <header>
+        <column-header>Code</column-header>
+        <column-header>Description</column-header>
+        <column-header>Total</column-header>
+    </header>
+    <section class="size-14">
+        {#discountItems}
+            <grid-item data-header="code"><a href="/Promotion/Detail/{code}">{code}</a></grid-item>
+            <grid-item data-header="Desc">{description}</grid-item>
+            <grid-item data-header="Price">{@formatCurrency value="{total}" /}</grid-item>
+        {/discountItems}
+        {^discountItems}
+            <span class="margin-left">No applied discounts for this order...</span>
+        {/discountItems}
+    </section>
+</md-table>

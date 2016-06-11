@@ -1,0 +1,55 @@
+<section class="full-white">
+    <md-bar>
+        <side-panel>
+            <img src="{@placeholder value="{avatar}" defaultValue="/images/assets/default-avatar.jpg"  /}" class="md-avatar size-50">
+        </side-panel>
+        <main-panel>
+            <h3>Create User</h3>
+        </main-panel>
+    </md-bar>
+    <md-layout ea-bind="user">
+        <side-panel class="border-right" ea-bind="user-detail">
+            <nav-list>
+                <menu-item>
+                    <span class="icon-person header primary accent"></span>
+                    <span></span>
+                </menu-item>
+                <menu-item>
+                    <a href="/User/List/1" class="flex-box align-center">
+                        <span class="icon-search main icon"></span>
+                        <span class="hide-span-medium-down">Users</span>
+                    </a>
+                </menu-item>
+            </nav-list>
+        </side-panel>
+        <main-panel class="padding" scroll>
+            <silicon-form class="md form-width" service="User"
+                          notify-service="Notify" success-message="User Created"
+                          location-service="Location" redirect-previous-location="true">
+                <form role="form" method="post" name="User">
+                    <md-input icon="edit" prefix="prefix" type="text" required
+                              placeholder="First Name" data-id="firstName" data-name="firstName"></md-input>
+                    <md-input icon="edit" prefix="prefix" type="text" required
+                              placeholder="Last Name" data-id="lastName" data-name="lastName"></md-input>
+                    <md-input icon="email" prefix="prefix" type="text" required placeholder="Email" data-id="email" data-name="email"></md-input>
+                    <md-input icon="lock" prefix="prefix" type="password" required
+                              placeholder="Password" data-id="password" data-name="password"></md-input>
+                    <md-input icon="lock" prefix="prefix" type="password" required
+                              placeholder="Confirm Password" data-id="confirmPassword" data-name="confirmPassword"></md-input>
+                    <md-input icon="edit" prefix="prefix" type="text"
+                              placeholder="Street Address" data-id="street" data-name="street"></md-input>
+                    <md-input icon="location-city" prefix="prefix" type="text"
+                              placeholder="City" data-id="city" data-name="city"></md-input>
+                    <md-state-select prefix-icon="my-location" md-select data-id="state"
+                                     data-name="state" prefix="prefix"></md-state-select>
+                    <md-input icon="location-on" prefix="prefix" type="text"
+                              placeholder="Zip Code" data-id="zipCode" data-name="zipCode"></md-input>
+                    <md-input icon="local-phone" prefix="prefix" type="text"
+                              placeholder="Phone Number" data-id="phoneNumber" data-name="phoneNumber"></md-input>
+
+                    <md-submit class="primary margin-top two" raised="true">Submit</md-submit>
+                </form>
+            </silicon-form>
+        </main-panel>
+    </md-layout>
+</section>

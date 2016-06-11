@@ -1,0 +1,13 @@
+{?TrendsGraph}
+<db-component name="Trends" subtitle="Graph" service="TrendsGraph">
+    <db-settings content-init>
+        <menu-item><a action="hide">Hide</a></menu-item>
+    </db-settings>
+    <flex-box class="trends-graph-container">
+        <db-easy-piechart service="TrendsGraphSales" content-init></db-easy-piechart>
+        <db-easy-piechart service="TrendsGraphOrders" content-init></db-easy-piechart>
+        <db-easy-piechart service="TrendsGraphUsers" conent-init></db-easy-piechart>
+        <db-easy-piechart service="TrendsGraphTraffic" content-init></db-easy-piechart>
+    </flex-box>
+</db-component>
+{/TrendsGraph}

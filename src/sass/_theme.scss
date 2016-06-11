@@ -1,0 +1,99 @@
+
+
+$theme:null;
+
+@include component-theme($touch:$theme);
+@include semantic-components();
+@include md-ripple-effect();
+@include md-material-depth();
+
+.main{
+  color:map-get($Color,white);
+  background:map-get($Color,main);
+  &.icon{
+    color:map-get($Color,main);
+    background:none;
+  }
+}
+
+.primary{
+  color:map-get($Color,white);
+  background:map-get($Color,primary);
+  &.icon{
+    background:none;
+    color:map-get($Color,primary);
+  }
+  &.accent{
+    color:map-get($Color,white);
+    background:map-get($Color,primary-accent);
+    &.icon{
+      background:none;
+      color:map-get($Color,primary-accent);
+    }
+  }
+  &.badge{
+    background:map-get($Color,custom-600);
+    color:map-get($Color,primary);
+  }
+}
+
+.secondary{
+  color:map-get($Color,white);
+  background:map-get($Color,secondary);
+  &.icon{
+    background:none;
+    color:map-get($Color,secondary);
+  }
+  &.accent{
+    background:map-get($Color,secondary-accent);
+    color:map-get($Color,white);
+    &.icon{
+      background:none;
+      color:map-get($Color,secondary-accent);
+    }
+  }
+}
+
+
+.disabled{
+  color:map-get($Color,disabled) !important;
+  background:none !important;
+  *{
+    color:map-get($Color,disabled) !important;
+    background:none !important;
+    cursor:normal !important;
+  }
+  cursor:normal !important;
+}
+
+.app{
+  &.order{
+    &.icon{
+      background:none;
+      color:map-get($Color,custom-200);
+    }
+  }
+  &.red{
+    &.icon{
+      background:none;
+      color:map-get($Color,custom-300);
+    }
+  }
+  &.custom{
+    background:map-get($Color,custom-800);
+    color:map-get($Color,white);
+    &.icon{
+      background:none !important;
+      color:map-get($Color,custom-800);
+    }
+  }
+
+}
+
+.md{
+  &.blue{
+    background:map-deep-get($MD,color,blue,value);
+    color:map-get($Color,white);
+  }
+}
+

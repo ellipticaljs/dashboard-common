@@ -1,0 +1,62 @@
+///variables & colors ---------------------------------
+
+
+$MD:(
+        font:$Roboto,
+        color:$MD-Color,
+        opacity:$MD-Opacity,
+        light-dark-opacity:$MD-Light-Dark-Opacity,
+        icons:$MD-Icons,
+        depth:$MD-Depth
+);
+
+
+$Color:(
+        primary:#689f38,
+        primary-accent:map-deep-get($MD-Color,light-green,primary,400,value),
+        main:map-deep-get($MD-Color,indigo,primary,300,value),
+        secondary:map-deep-get($MD-Color,deep-purple,primary,300,value),
+        secondary-accent:map-deep-get($MD-Color,purple,primary,300,value),
+        white:#fff,
+        medium-white:#f2f2f2,
+        off-white:#eee,
+        grey:#cdcdcd,
+        medium-grey:#999,
+        dark-grey:#666,
+        black:#333,
+        disabled:#d8d8d8,
+        custom-100:#616161,
+        custom-200:#0f9d58,
+        custom-300:#da4336,
+        custom-400:#757575,
+        custom-500:#525252,
+        custom-600:#c3e1a9,
+        custom-700:#b6d9d6,
+        custom-800:#eb8046,
+        custom-900:#a7a7a5
+);
+
+$Status:(
+        open:map-get($Color,primary-accent),
+        closed:map-get($Color,secondary-accent),
+        completed:map-get($Color,secondary-accent),
+        pending:map-get($Color,custom-800),
+        processing:map-get($Color,custom-800),
+        processed:map-get($Color,custom-200),
+        cancelled:map-get($Color,black),
+        charged:map-deep-get($MD-Color,indigo,primary,300,value),
+        authorized:map-deep-get($MD-Color,green,value),
+        recurring:map-deep-get($MD-Color,teal,value),
+        routed:map-deep-get($MD-Color,light-blue,accent,700,value),
+        refunded:#666,
+        returned:#999,
+        delivered:map-get($Color,primary),
+        payment-due:map-deep-get($MD-Color,yellow,primary,800,value),
+        current:map-deep-get($MD-Color,light-green,primary,800,value),
+        failed:map-deep-get($MD-Color,red,value),
+        expired:map-deep-get($Color,custom-300),
+        awaiting-payment:map-deep-get($MD-Color,orange,value),
+        subscribed:map-deep-get($MD-Color,green,primary,600,value),
+        shipped:map-get($Color,primary),
+        other:map-deep-get($MD-Color,brown,primary,400,value)
+);

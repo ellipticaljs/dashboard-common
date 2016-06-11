@@ -1,0 +1,134 @@
+@import "chartist/chartist";
+
+@mixin db-chart($colors:standard){
+  $_chart-default-colors:(
+          #d70206,
+          #f05b4f,
+          #f4c63d,
+          #d17905,
+          #453d3f,
+          #59922b,
+          #0544d3,
+          #6b0392,
+          #f05b4f,
+          #dda458,
+          #eacf7d,
+          #86797d,
+          #b2c326,
+          #6188e2,
+          #a748ca
+  );
+
+  $_chart-standard-colors:(
+          #48b401,
+          #ff7e06,
+          #ffb900,
+          #8bc34a,
+          #e91e63,
+          #3f51b5,
+          #67c3e4,
+          #29b3e5,
+          #15889b,
+          #0099d3,
+          #eacf7d,
+          #86797d,
+          #b2c326,
+          #6188e2,
+          #a748ca
+  );
+
+  $_chart-material-colors:(
+          #f44336,
+          #009688,
+          #3f51b5,
+          #4caf50,
+          #e91e63,
+          #ffeb3b,
+          #2196f3,
+          #ff9800,
+          #03a9f4,
+          #ff5722,
+          #ffc107,
+          #8bc34a,
+          #cddc39,
+          #00bcd4,
+          #9c27b0
+
+  );
+
+  @if $colors==standard{
+    $ct-series-colors:$_chart-standard-colors;
+  }@else if $color==material{
+    $ct-series-colors:$_chart-material-colors;
+  }@else{
+    $ct-series-colors:$_chart-default-colors;
+  }
+
+  @include ct-chart-classes();
+
+  db-barchart{
+    .legend{
+      @include align-items(center);
+      &>*{
+        margin-left:.5em;
+      }
+      .symbol{
+        margin-left:1em;
+      }
+
+    }
+  }
+  db-piechart{
+    .ct-chart{
+      color:#fff;
+      .ct-label {
+        color:#fff !important;
+        fill:#fff !important;
+      }
+      font-family:'robotomedium';
+    }
+    .legend{
+      .symbol{
+        margin-right:.3em;
+      }
+    }
+  }
+  db-barchart,db-piechart{
+    .legend{
+      margin-bottom:1em;
+      font-size:14px;
+      .symbol{
+        height:12px;
+        width:12px;
+        background:#d8d8d8;
+        @for $i from 1 to length($ct-series-colors){
+          &.color-#{$i}{
+            background:nth($ct-series-colors,$i);
+          }
+        }
+
+      }
+
+    }
+  }
+
+  db-easy-piechart{
+    .easy-pie-chart {
+      position: relative;
+      text-align: center;
+      margin: 5px auto;
+    }
+    .easy-pie-chart span{
+      font-size:24px;
+      font-family:'robotomedium';
+      color:#ccc;
+    }
+    .easy-pie-chart canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+
+}

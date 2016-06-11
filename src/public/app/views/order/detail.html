@@ -1,0 +1,97 @@
+<section class="full-white">
+    {>"shared.order.md-bar" /}
+    <md-layout ea-bind="order-detail">
+        <side-panel class="border-right">
+            {>"shared.order.nav-list" /}
+        </side-panel>
+        <main-panel class="order-details" scroll touch-scroll>
+            {#order}
+                <div class="content-container small-font">
+                    <flex-box class="space-between order-header">
+                        <flex-box class="column">
+                            <span class="order-date">{@formatDate value="{orderDate}" /}</span>
+                            <span>Status</span>
+                            {#orderStatus}
+                                <a href="/Order/Status/{id}" class="order-status {@toLower value="{status}" /}">{@camelCaseToSentence value="{status}" /}</a>
+                            {/orderStatus}
+                            <br>
+
+                        </flex-box>
+                        <flex-box class="column">
+                            <h4 class="margin-top-zero">Delivery</h4>
+                            {#shippingMethod}
+                                <div class="shipping"><span class="accent">Shipping Type:</span> <span class="order-info">{id}</span></div>
+                                <div><span class="accent"></span> <span class="order-info">{description}</span></div>
+                                <div><span class="accent">Charge:</span> <span>{@formatCurrency value="{charge}" /}</span></div>
+                            {/shippingMethod}
+                            <div class="info info-container margin-top">
+                                {userType}
+                            </div>
+                        </flex-box>
+                        <flex-box class="column billing-box">
+                            <h4 class="margin-top-zero">Billing Address</h4>
+                            {#billingAddress}
+                                <span class="accent">{firstName} {lastName}</span>
+                                <span>{street}</span>
+                                <span>{city} , {state} {zipCode}</span>
+                                <span>{phoneNumber}</span>
+                                <a href="mailtp:{email}" class="link" data-route="false">{email}</a>
+                            {/billingAddress}
+                        </flex-box>
+                    </flex-box>
+                    <flex-box class="space-between detail-row">
+                        <flex-box class="column">
+                            <h4>Order Details</h4>
+                            <div><span class="accent">ID:</span> <span class="order-info">{id}</span></div>
+                            <div><span class="accent">Order Date: </span> <span>{@formatDate value="{orderDate}" /}</span></div>
+                            <span class="order-total">{@extFormatCurrency value="{total}" /}</span>
+                            <div class="margin-top two notes-header {notesDisplay}"><span class="icon-info-outline"></span>
+                                <span class="notify-header-size">Notes</span>
+                            </div>
+                            <div class="warning notes-container {notesDisplay}">
+                                {notes}
+                            </div>
+                        </flex-box>
+                        <flex-box class="column shipping-box">
+                            <h4>Ship To</h4>
+                            {#shippingAddress}
+                                <span class="accent">{firstName} {lastName}</span>
+                                <span>{street}</span>
+                                <span>{city} , {state} {zipCode}</span>
+                                <span>{phoneNumber}</span>
+                                <a href="mailtp:{email}" class="link" data-route="false">{email}</a>
+                            {/shippingAddress}
+                        </flex-box>
+                        <flex-box class="column delivery-box">
+                            <h4>Payment</h4>
+                            {#payment}
+                                {#responseFields}
+                                    <div><span class="accent">{@properCaseToSentence value="{key}" /}:</span> <span class="primary icon">{value}</span></div>
+                                {/responseFields}
+                                {#paymentFields}
+                                    <div><span class="accent">{@properCaseToSentence value="{key}" /}:</span> <span class="primary icon">{value}</span></div>
+                                {/paymentFields}
+                            {/payment}
+                            {#promotion}
+                                <div class="margin-top promo-header"><span class="icon-info-outline"></span>
+                                    <span class="notify-header-size smaller">Promotion Codes</span>
+                                </div>
+                                <div class="success notes-container">
+                                    {codes}
+                                </div>
+                            {/promotion}
+                        </flex-box>
+                    </flex-box>
+                </div>
+                {>"shared.order.order-items" /}
+                {>"shared.order.summary" /}
+                {>"shared.order.notifications" /}
+                {>"shared.order.discounts" /}
+
+            {/order}
+            {^order}
+                <p style="padding:1em;">There is no order currently associated with the requested id...</p>
+            {/order}
+        </main-panel>
+    </md-layout>
+</section>

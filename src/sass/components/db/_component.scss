@@ -1,0 +1,121 @@
+
+
+
+@mixin _db-component($map){
+
+  $_size:map-get-default($map,size,45px);
+  $_font-family:map-get-default($map,font-family,'robotolight');
+  $_font-family-medium:map-get-default($map,font-family-medium,'robotomedium');
+  $_icon-font:map-get-default($map,icon-font,'material');
+  $_background:map-get-default($map,background,white);
+
+  $_line:null;
+  $_line-2:null;
+  $_color:null;
+  $_title:null;
+  $_hover-color:null;
+  $_font-color:null;
+  @if $_background==white{
+    $_line:#e6e6e6;
+    $_line-2:#e6e6e6;
+    $_color:#999;
+    $_title:#616161;
+    $_hover-color:#757575;
+    $_font-color:#606060;
+  }@else{
+    $_line:rgba(#fff,.3);
+    $_line-2:rgba(#fff,.1);
+    $_color:rgba(#fff,.8);
+    $_title:rgba(#fff,1);
+    $_hover-color:#fff;
+    $_font-color:#fff;
+  }
+
+  width:100%;
+  background:$_background;
+  color:$_font-color;
+  @extend .md.elevation-05;
+  border-radius:2px;
+  margin-bottom:1.5em;
+  min-height:200px;
+  &>header{
+    @include flexbox($justification:space-between,$alignment:center);
+    height:$_size;
+    border-bottom:1px solid $_line;
+    padding-left:1em;
+    span{
+      font-family: $_font-family-medium;
+      font-size:20px;
+      color:$_title;
+      &.subtitle{
+        font-family: $_font-family;
+      }
+    }
+    [data-settings],[data-close]{
+      width:$_size;
+      height:$_size;
+      @include flexbox($justification:center,$alignment:center);
+      border:0;
+      border-left:1px solid $_line-2;
+      color:$_color;
+      span{
+        font-family:$_icon-font;
+        font-size:18px;
+        color:$_color;
+        @include transition(all 350ms);
+      }
+      &:hover{
+        cursor:pointer;
+        span{
+          color:$_hover-color;
+        }
+      }
+
+    }
+
+  }
+  &>section{
+    padding:1em;
+    min-height:200px;
+    position:relative;
+    &>db-settings{
+      top:0;
+      left:85%;
+      width:auto;
+      min-width:10em;
+    }
+  }
+  &.partial{
+    width:49%;
+    &.left{
+      margin-right:auto;
+    }
+    &.right{
+      margin-left:auto;
+    }
+  }
+  @include media-breakpoint(1024px){
+    &.touch-partial{
+      width:49%;
+      &.right{
+        margin-left:auto;
+      }
+    }
+  }
+  @include small-content(){
+    &.touch-partial,&.partial{
+      width:100%;
+    }
+  }
+
+}
+
+
+
+@mixin db-component($class:null,$map:()){
+  $tag:db-component;
+  @include element-tag($tag:$tag,$class:$class){
+    @include _db-component($map);
+    @content;
+  }
+}

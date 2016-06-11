@@ -1,0 +1,84 @@
+//custom site/project mixins
+
+@mixin live-reload(){
+  @-webkit-keyframes livefix { from { opacity: 1; } to { opacity: 1; } }
+  html { -webkit-animation: livefix infinite 1s; }
+}
+
+
+@mixin order-status(){
+  &.closed{
+    background:map-get($Status,closed);
+  }
+  &.open{
+    background:map-get($Status,open);
+  }
+  &.completed{
+    background:map-get($Status,completed);
+  }
+  &.pending{
+    background:map-get($Status,pending);
+  }
+  &.processed{
+    background:map-get($Status,processed);
+  }
+  &.processing{
+    background:map-get($Status,processing);
+  }
+  &.cancelled{
+    background:map-get($Status,cancelled);
+  }
+  &.charged{
+    background:map-get($Status,charged);
+  }
+  &.authorized{
+    background:map-get($Status,authorized);
+  }
+  &.recurring{
+    background:map-get($Status,recurring);
+  }
+  &.routed{
+    background:map-get($Status,routed);
+  }
+  &.refunded{
+    background:map-get($Status,refunded);
+  }
+  &.returned{
+    background:map-get($Status,returned);
+  }
+  &.delivered{
+    background:map-get($Status,delivered);
+  }
+  &.paymentDue{
+    background:map-get($Status,payment-due);
+    font-size:12px;
+  }
+  &.current{
+    background:map-get($Status,current);
+  }
+  &.failed{
+    background:map-get($Status,failed);
+  }
+  &.expired{
+    background:map-get($Status,expired);
+  }
+  &.awaitingPayment{
+    background:map-get($Status,awaiting-payment);
+    font-size:12px;
+  }
+  &.subscribed{
+    background:map-get($Status,subscribed);
+  }
+  &.shipped{
+    background:map-get($Status,shipped);
+  }
+  &.other{
+    background:map-get($Status,other);
+  }
+}
+
+
+
+
+
+

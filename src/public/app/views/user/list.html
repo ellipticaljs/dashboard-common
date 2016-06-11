@@ -1,0 +1,33 @@
+<md-scroll selector="[md-scroll]" camel-case="false"></md-scroll>
+<section class="full-white">
+    {>"shared.md-bar" barUrl="/User/List/1" barNewTitle="Create User" barTitle="Users" barIcon="person-add" barNewUrl="/User/Create/New"  /}
+    <md-layout ea-bind="list" service="User" label="User" item-selector="li" detail-action="/User/Detail/[id]">
+        <side-panel>
+            {>"shared.nav-list" navIcon="person" navNewUrl="/User/Create/New" /}
+        </side-panel>
+        <main-panel>
+            <md-list>
+                {#users}
+                    <li data-id="{id}">
+                        <flex-box class="person">
+                            <md-checkbox data-id="{id}"></md-checkbox>
+                            <img src="{@placeholder value="{avatar}" defaultValue="/images/assets/default-avatar.jpg"  /}" class="md-avatar">
+                            <flex-box class="column">
+                                <a href="/User/Detail/{id}">{firstName} {lastName}</a>
+                                <p>
+                                    <span>{street}</span> <span class="accent">{city} {state} {zipCode}</span>
+                                </p>
+                                <p>
+                                    <span>{phoneNumber}</span>
+                                    <a href="mailto:{email}" class="accent" data-route="false">{email}</a>
+                                </p>
+                            </flex-box>
+                        </flex-box>
+                        <a href="/UserOrder/List/{id}/1" class="md-badge purple order-history {@falsy value="{orderCount}" altValue="hide-important" /}">{orderCount}</a>
+                        <a class="small-grey user-date">{@formatDate value="{signUpDate}" /}</a>
+                    </li>
+                {/users}
+            </md-list>
+        </main-panel>
+    </md-layout>
+</section>

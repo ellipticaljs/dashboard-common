@@ -1,0 +1,45 @@
+
+$_lighten-hover:lighten(map-get($Color,off-white),3%);
+@include component(ci-md-menu, (
+        background:#fff,
+        font-color:#000,
+        hover:(
+                font-color:map-get($Color,primary)
+        ),
+        active:(
+                font-color:map-get($Color,primary)
+        )
+));
+
+@include component(ci-md-menu-header, (
+        font-color:#000,
+        icon-color:map-get($Color,custom-400),
+        hover:(
+                background:$_lighten-hover,
+                font-color:map-get($Color,primary),
+                icon-color:map-get($Color,primary)
+        ),
+        active:(
+                background:map-get($Color,off-white),
+                font-color:map-get($Color,primary)
+        )
+));
+
+@include component(red-tooltip,(
+        font-color:#fff,
+        background:map-get($Color,custom-300),
+        border:0
+));
+
+@include component(indigo-tooltip,(
+        font-color:#fff,
+        background:map-get($Color,main),
+        border:0
+));
+
+
+@include component(grey-tooltip,(
+        font-color:map-get($Color,custom-500),
+        background:map-get($Color,grey),
+        border:0
+));

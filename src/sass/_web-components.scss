@@ -1,0 +1,419 @@
+
+@include component-preload();
+@include mixins-template();
+@import "components/mixins";
+
+/////// paper components ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+paper-fab{
+  position:fixed;
+  z-index:5;
+  top:85%;
+  right:5%;
+}
+
+.md.fab{
+  background:map-deep-get($MD,color,deep-orange,value);
+  color:#fff;
+  position:fixed;
+  z-index:5;
+  top:85%;
+  right:5%;
+}
+//////  ui components //////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// ui-modal
+@include ui-modal();
+
+$next-icon:map-deep-get($MD,icons,keyboard-arrow-right);
+$prev-icon:map-deep-get($MD,icons,keyboard-arrow-left);
+
+
+
+@include ui-tooltip($component:red-tooltip,$class:red,$map:(tip-color:map-get($Color,custom-300)));
+@include ui-tooltip($component:grey-tooltip,$class:grey,$map:(tip-color:map-get($Color,grey)));
+@include ui-tooltip($component:indigo-tooltip,$class:main-tooltip,$map:(tip-color:map-get($Color,main)));
+
+silicon-form{
+  width:100%;
+  padding:1em 4em 1em 2em;
+  display:block;
+  max-width:100%;
+  &.form-width{
+    width:650px;
+  }
+  paper-submit,.md-button{
+    margin-top:2em;
+  }
+}
+
+
+
+///// material design components ///////////////////////////////////////////////////////////////////////////////////////
+
+/// md-loader
+//@include md-loader();
+
+/// md-menu
+@include md-menu($component:ci-md-menu,$header-component:ci-md-menu-header){
+  margin-top:74px;
+};
+
+/// md-dropdown
+@include md-dropdown($tags:(db-settings));
+
+
+
+/// md-icon-badge green
+@include md-icon-badge($class:green-badge){
+  @include md-badge(){
+    @extend .primary.badge;
+  }
+};
+
+/// md-icon-badge purple
+@include md-icon-badge($class:purple-badge,$map:(color:map-deep-get($MD,color,purple,primary,100,value))){
+  @include md-badge(){
+    @extend .secondary.accent;
+  }
+};
+
+/// md-icon-badge indigo
+@include md-icon-badge($class:indigo-badge,$map:(color:map-get($Color,main))){
+  @include md-badge(){
+    @extend .main;
+  }
+};
+
+/// md-badge
+@include md-badge($class:purple){
+  @extend .secondary.accent;
+}
+
+md-badge,.md-badge{
+  min-width:1.5em;
+}
+
+/// md-brand
+@include md-brand(){
+  background:map-get($Color,white);
+  color:map-get($Color,custom-900);
+  border-bottom:1px solid map-get($Color,disabled);
+  font-size:26px;
+  max-width:250px;
+}
+
+/// md-toolbar
+@include md-toolbar(){
+  @extend .primary;
+  $map:(
+          placeholder:rgba(255,255,255,.5),
+          label:rgba(255,255,255,.8),
+          primary:#fff,
+          color:#fff,
+          height:2em,
+          width:350px
+  );
+  @include md-input($class:tb,$map:$map);
+  @include md-input-icon-button($class:tb,$map:$map){
+    margin-top:0 !important;
+  };
+  &>flex-box{
+    @include align-items(center);
+    &.icons{
+      color:rgba(255,255,255,1);
+      &>*{
+        margin-left:18px;
+        &.user{
+          margin-left:4px;
+          font-size:12px;
+        }
+      }
+      &>md-icon-badge{
+        margin-left:24px;
+      }
+      @include span-icon(){
+        color:map-get($Color,white);
+      }
+    }
+  }
+}
+
+/// md-fab-transform
+
+
+
+
+/// md-dialog
+@include md-dialog();
+
+/// md-avatar
+@include md-avatar();
+
+/// md-icon-card
+@include md-icon-card($map:(
+        width:23%,
+        height:110px,
+        breakpoint:(
+                large:(
+                        width:48%
+                ),
+                medium:(
+                        width:48%,
+                        icon-size:72px,
+                        header-size:2.25em
+                ),
+                small:(
+                        width:100%
+                )
+        )
+)){
+  background:map-get($Color,white);
+  color:map-get($Color,primary);
+  @extend .md.elevation-05;
+  border-radius:2px;
+  .card-text{
+    color:map-get($Color,custom-500);
+  }
+  &:first-of-type,&:nth-of-type(2){
+    margin-bottom:1.5em;
+  }
+}
+
+
+/// md-datepicker
+@include md-datepicker();
+
+md-datepicker.md{
+  margin-left:2em;
+  width:90%;
+}
+
+
+$list-border:map-get($Color,medium-white);
+$list-color:map-get($Color,custom-900);
+
+///md-list
+@include md-list(){
+  &>li{
+    color:$list-color;
+    .person{
+      width:500px;
+    }
+    .accent{
+      color:darken($list-color,20%);
+    }
+    p{
+      line-height:1.1;
+      margin:.15em 0;
+    }
+    a{
+      color:map-get($Color,main);
+      &.accent{
+        color:map-get($Color,primary-accent);
+        margin-left:.4em;
+      }
+      &.small-grey{
+        font-size:12px;
+        color:map-get($Color,grey) !important;
+      }
+      &:hover{
+        opacity:.7;
+      }
+    }
+    .md-avatar{
+      margin-right:1em;
+    }
+    md-checkbox{
+      visibility: visible !important;
+      margin-top:.5em;
+    }
+    &:nth-of-type(4n + 3){
+      border-left:2px solid map-get($Color,custom-300);
+    }
+  }
+}
+///md-bar
+@include md-bar(){
+  &>side-panel{
+    @include span-icon(){
+      font-size:28px;
+    }
+  }
+  &>main-panel{
+    color:map-get($Color,grey);
+    .refresh{
+      font-size:28px;
+      color:map-get($Color,grey);
+    }
+    .labels{
+      color:map-get($Color,medium-grey);
+      margin-left:1em;
+    }
+    .accent{
+      color:map-get($Color,black);
+    }
+
+    padding-right:1.75em;
+
+    .nav{
+      a{
+        height:35px;
+        width:35px;
+        border: 1px solid map-get($Color,off-white);
+        @include flexbox($justification:center,$alignment:center);
+        @include span-icon(){
+          color:map-get($Color,medium-grey);
+          font-size:18px;
+        }
+        &:first-of-type{
+          border-right:0;
+        }
+      }
+    }
+  }
+}
+
+///md-button-group
+@include md-button-group();
+
+//md-checkbox
+md-checkbox{
+  min-width:30px;
+}
+
+///md-button
+@include md-button();
+
+///md-layout
+@include md-layout(){
+  &>side-panel{
+    &.border-right{
+      border-right:1px solid map-get($Color,medium-white);
+    }
+  }
+};
+
+///md-grid
+@include md-grid($map:()){
+  &.orders-grid{
+    width:101%;
+    &>header{
+      &>*{
+        &:nth-of-type(1){
+          max-width:7% !important;
+        }
+        &:nth-of-type(3){
+          width:20% !important;
+        }
+        &:nth-of-type(5){
+          width:20% !important;
+        }
+        &:nth-of-type(6){
+          width:10% !important;
+        }
+      }
+    }
+    &>section{
+      grid-item{
+        &:nth-of-type(7n+1){
+          max-width:7% !important;
+        }
+        &:nth-of-type(7n+3){
+          width:20% !important;
+        }
+        &:nth-of-type(7n+5){
+          width:20% !important;
+        }
+        &:nth-of-type(7n+6){
+          width:10% !important;
+        }
+      }
+    }
+  }
+};
+
+///nav-list
+@include nav-list(){
+  span,a{
+    font-size:12px;
+    color:map-get($Color,dark-grey);
+  }
+  @include span-icon(){
+    margin-right:.5em;
+  }
+  &.disabled{
+    span,a{
+      color:map-get($Color,disabled);
+    }
+    @include span-icon(){
+      color:map-get($Color,disabled);
+    }
+    &:hover{
+      cursor:default;
+    }
+  }
+  &:hover{
+    cursor:pointer;
+  }
+  .md-badge{
+    margin-left:.25em;
+  }
+  .header{
+    @include flexbox($alignment:center,$justification:center);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    font-size:32px;
+    &.large{
+      @include flexbox($alignment:center,$justification:center);
+      font-size:48px;
+      height:60px;
+      width:60px;//
+    }
+  }
+};
+
+
+
+
+
+///// dashboard components /////////////////////////////////////////////////////////////////////////////////////////////
+
+/// db-breadcrumb
+@include db-breadcrumb();
+
+/// db-datepicker
+@include db-datepicker($map:(active-extend-color:map-get($Color,primary)));
+
+/// db-component
+@include db-component(){
+  &[name=Browser]{
+    min-height:500px;
+  }
+  &[name=Device]{
+    min-height:300px;
+  }
+};
+
+dashboard-carousel{
+  display:block;
+}
+
+/// db-component, class:social
+@include db-component($class:social,$map:(background:#49cc8e));
+
+
+/// db-chart
+@include db-chart();
+
+db-barchart{
+  display:block;
+  min-height:400px;
+}
+
+.trends-graph-container{
+  @include justify-content(space-around);
+}
+

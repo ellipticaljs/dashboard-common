@@ -1,0 +1,17 @@
+<md-bar>
+    <side-panel>
+      {#user}
+          <img src="{@placeholder value="{avatar}" defaultValue="/images/assets/default-avatar.jpg"  /}" class="md-avatar size-50">
+
+      {/user}
+    </side-panel>
+    <main-panel>
+      {#user}
+          <h3><span>{firstName}</span> <span>{lastName}</span></h3>
+          <flex-box class="align-center">
+              <span class="icon-launch secondary accent icon small-margin-right"></span>
+              <a href="mailto:{email}" class="secondary size-12">{email}</a>
+          </flex-box>
+      {/user}
+    </main-panel>
+</md-bar>

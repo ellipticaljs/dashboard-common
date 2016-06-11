@@ -1,0 +1,50 @@
+
+
+/// @access public
+/// @param {Map} $map
+/// @prop {String} margin (0 0 1.5em 0) - component margin bottom
+/// @prop {String} height (50px) - height
+/// @prop {String} font-family ('robotolight') - label font family
+/// @prop {Map} icon - component icon map
+/// @prop {String} icon.color (#757575) - icon color
+/// @prop {String} icon.font-size (48px) - icon size
+/// @prop {Map} flex - component flex label map
+/// @prop {String} flex.font-family ('robotoregular') - flex label font-family
+/// @prop {String} flex.font-size (14px) - flex label font-size
+/// @content css
+/// @example
+///   db-breadcrumb();
+@mixin db-breadcrumb($map:()){
+  $_height:map-get-default($map,height,50px);
+  $_margin:map-get-default($map,margin,0 0 1.5em 0);
+  $_font-family:map-get-default($map,font-family,'robotolight');
+  $_icon-font-size:map-nested-get-default($map,icon,font-size,48px);
+  $_icon-font-color:map-nested-get-default($map,icon,color,#757575);
+  $_flex-font-family:map-nested-get-default($map,flex,font-family,'robotoregular');
+  $_flex-font-size:map-nested-get-default($map,flex,font-size,14px);
+
+  db-breadcrumb{
+    @include flexbox($alignment:center,$justification:space-between);
+    width:100%;
+    height:$_height;
+    margin:$_margin;
+    font-family:$_font-family;
+    .icon{
+      font-size:$_icon-font-size;
+      color:$_icon-font-color;
+    }
+    &>flex-box{
+      font-family: $_flex-font-family;
+      font-size:$_flex-font-size;
+      &>*{
+        margin-left:.5em;
+      }
+      .date{
+        margin-right:.3em;
+        min-width:200px;
+      }
+    }
+
+    @content;
+  }
+}

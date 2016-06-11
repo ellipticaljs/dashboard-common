@@ -1,0 +1,14 @@
+<section class="content">
+    <h4 class="padding-bottom">Settings</h4>
+    <div class="md-content">
+        <h5 class="primary icon medium">Dashboard</h5>
+        <br>
+        <br>
+        <flex-box class="column" ea-bind="dashboard-settings">
+            {#settings}
+                <label>{name}</label>
+                <md-switch class="padding-bottom" md-id="{key}" checked="{@checked value="{active}"  /}" {disableSwitch}></md-switch>
+            {/settings}
+        </flex-box>
+    </div>
+</section>

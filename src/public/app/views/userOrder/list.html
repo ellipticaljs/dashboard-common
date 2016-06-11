@@ -1,0 +1,111 @@
+<section class="full-white">
+    <md-bar>
+        <side-panel>
+          {#user}
+              <img src="{@placeholder value="{avatar}" defaultValue="/images/assets/default-avatar.jpg"  /}" class="md-avatar size-50">
+          {/user}
+        </side-panel>
+        <main-panel>
+            <flex-box>
+                <a href="/Order/List/1">
+                    <span class="icon-cached refresh ui-tooltip" data-title="Refresh" data-css="grey"
+                          ea-bind="tooltip"></span>
+                </a>
+              {#pagination}
+                  <div class="labels">
+                      <span>{beginRecord}-{endRecord}</span>
+                      <span>of</span>
+                      <span class="accent" data-id="to-label" ea-bind="to-label">{count}</span>
+                      <span class="accent">{label}</span>
+                  </div>
+              {/pagination}
+            </flex-box>
+            <md-button-group>
+              {#pagination}
+                  <a href="{prevPage}">
+                      <span class="icon-chevron-left"></span>
+                  </a>
+                  <a href="{nextPage}">
+                      <span class="icon-chevron-right"></span>
+                  </a>
+              {/pagination}
+            </md-button-group>
+        </main-panel>
+    </md-bar>
+    <md-layout ea-bind="list" service="Order" label="Order" item-selector="grid-item" detail-action="/Order/Detail/[id]">
+        <side-panel class="border-right">
+            <nav-list>
+                <menu-item>
+                    <span class="icon-shop header primary accent large"></span>
+                </menu-item>
+                <menu-item action="delete" class="disabled">
+                    <span class="icon-delete main icon"></span>
+                    <span>Delete</span>
+                </menu-item>
+                <menu-item action="view" class="disabled">
+                    <span class="icon-search main icon"></span>
+                    <span>View</span>
+                </menu-item>
+                <menu-item>
+                    {#user}
+                    <a href="/User/Detail/{id}">
+                        <span class="icon-person main icon"></span>
+                        <span>Profile</span>
+                    </a>
+                    {/user}
+                </menu-item>
+            </nav-list>
+        </side-panel>
+        <main-panel>
+              <h3 class="header-text">
+                {#user}
+                    Order History for {firstName} {lastName}
+                {/user}
+              </h3>
+            <md-grid class="orders-grid" service="Sort" refresh-url="/UserOrder/List/{userId}/1" columns="7" breakpoint="900" alt-background="odd">
+                <header>
+                    <column-header empty></column-header>
+                    <column-header field="Id" sort="true">Order Id</column-header>
+                    <column-header field="OrderDate" sort="true">Order Date</column-header>
+                    <column-header field="BillingAddress.LastName" sort="true">Placed By</column-header>
+                    <column-header field="OrderStatus.Status" sort="true">Status</column-header>
+                    <column-header field="ShippingAddress.LastName" sort="true">Ship To</column-header>
+                    <column-header field="Total" sort="true">Total</column-header>
+                </header>
+                <section>
+                    {#orders}
+                    <grid-item data-id="{id}" data-header="Select:">
+                        <md-checkbox md-id="cb{$idx}" data-id="{id}"></md-checkbox>
+                    </grid-item>
+                        <grid-item data-id="{id}" data-header="Order Id:"><a href="/Order/Detail/{id}" class="indigo">{id}</a></grid-item>
+                        <grid-item data-id="{id}" data-header="Order Date:"><a href="/Order/Detail/{id}" class="indigo">{@formatDate value="{orderDate}" /}</a></grid-item>
+                        {#billingAddress}
+                            <grid-item data-id="{id}" data-header="Placed By:">
+                            <span class="size-14">
+                             {firstName} {lastName}
+                            </span>
+                            </grid-item>
+                        {/billingAddress}
+                        {#orderStatus}
+                            <grid-item data-id="{id}" data-header="Status:"><span class="order-status summary {@toLower value="{status}" /}">{status}</span></grid-item>
+                        {/orderStatus}
+                        {#shippingAddress}
+                            <grid-item data-id="{id}" data-header="Ship To:">
+                            <span class="size-14">
+                              {firstName} {lastName}
+                            </span>
+                            </grid-item>
+                        {/shippingAddress}
+                        <grid-item data-id="{id}" data-header="Total">{@formatCurrency value="{total}" /}</grid-item>
+                    {/orders}
+                </section>
+                <footer>
+                    {>"shared.grid-pagination"/}
+                </footer>
+            </md-grid>
+          {^orders}
+              <p style="padding:1em;">There are no orders available for this user...</p>
+          {/orders}
+        </main-panel>
+    </md-layout>
+</section>

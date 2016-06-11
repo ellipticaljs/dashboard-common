@@ -1,0 +1,57 @@
+<section class="full-white">
+    <md-bar>
+        <side-panel>
+          {#user}
+              <img src="{avatar}" class="md-avatar size-50">
+
+          {/user}
+        </side-panel>
+        <main-panel>
+          {#user}
+              <h3><span>{firstName}</span> <span>{lastName}</span></h3>
+          {/user}
+        </main-panel>
+    </md-bar>
+    <md-layout ea-bind="user">
+        <side-panel class="border-right" ea-bind="user-detail">
+          {#user}
+              <nav-list>
+                  <menu-item>
+                      <span class="icon-person header primary accent"></span>
+                      <span></span>
+                  </menu-item>
+                  <menu-item>
+                      <a href="/Profile/Password">
+                      <span class="icon-vpn-key main icon"></span>
+                      <span>Reset Password</span>
+                      </a>
+                  </menu-item>
+              </nav-list>
+          {/user}
+          {^user}
+              <div class="primary-icon">
+                  <span class="icon-person"></span>
+              </div>
+          {/user}
+        </side-panel>
+        <main-panel class="padding" scroll>
+          {#user}
+              <silicon-form class="md form-width" service="Profile">
+                  <form role="form" method="{method}" name="Profile">
+                      <input type="hidden" name="id" value="{id}">
+                      <md-input icon="edit" prefix="prefix" type="text" required
+                                placeholder="{@placeholder value="{firstName_placeholder}"  defaultValue="First Name" /}" md-id="firstName" md-name="firstName" value="{firstName}"></md-input>
+                      <md-input icon="edit" prefix="prefix" type="text" required
+                                placeholder="{@placeholder value="{lastName_placeholder}"  defaultValue="Last Name" /}"
+                                md-id="lastName" md-name="lastName" value="{lastName}"></md-input>
+                      <md-input icon="email" prefix="prefix" type="text" required
+                                placeholder="{@placeholder value="{email_placeholder}"  defaultValue="Email" /}"
+                                md-id="email" md-name="email" value="{email}"></md-input>
+
+                      <md-submit class="primary" raised="true">Submit</md-submit>
+                  </form>
+              </silicon-form>
+          {/user}
+        </main-panel>
+    </md-layout>
+</section>

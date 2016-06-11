@@ -1,0 +1,65 @@
+<section class="full-white">
+    <md-bar>
+        <side-panel>
+
+        </side-panel>
+        <main-panel>
+            <h3>Edit Promotion</h3>
+        </main-panel>
+    </md-bar>
+    <md-layout>
+        <side-panel class="border-right">
+            <nav-list>
+                <menu-item>
+                    <span class="icon-local-offer header primary accent"></span>
+                    <span></span>
+                </menu-item>
+                <menu-item>
+                    <a href="/Promotion/List/1" class="flex-box align-center">
+                        <span class="icon-search main icon"></span>
+                        <span class="hide-span-medium-down">Promotions</span>
+                    </a>
+                </menu-item>
+            </nav-list>
+        </side-panel>
+        <main-panel class="padding" scroll>
+              {#promotion}
+                <silicon-form class="md form-width" service="Discount" notify-service="Notify" success-message="Promotion Updated">
+                    <form role="form" method="put" name="Discount" ea-bind="promotion">
+                        <input type="hidden" name="id" value="{id}">
+                        <input type="hidden" name="ruleType" value="subtotal">
+                        <md-input required data-id="code" data-name="code" readonly="true" data-value="{code}" label="code"></md-input>
+
+                        <flex-box class="align-center phone-flex">
+                            <md-checkbox data-id="expires" data-name="expires" label="Expires?"
+                                         class="phone-margin-top" data-checked="{expires}"></md-checkbox>
+                            <md-datepicker class="md" icon="date-range" prefix="prefix" placeholder="Expiration Date"
+                                           disabled data-value="{@expirationDate value="{expirationDate}" expires="{expires}" /}"></md-datepicker>
+                        </flex-box>
+
+                        <md-textarea prefix="prefix" icon="edit" disable-resize="true" data-id="description" data-name="description"
+                                     label="Description"></md-textarea>
+
+                        <md-input icon="attach-money" prefix="prefix" type="text" label="Minimum Shopping Bag Value"
+                                  data-id="minValue" data-name="minValue" data-value="{minValue}"></md-input>
+
+                        <md-input data-id="type" data-name="type" readonly="true" data-value="{type}" label="type"></md-input>
+
+                        <div class="input-element-container">
+                            <md-input icon="attach-money" prefix="prefix" type="text" required placeholder="Required: Promotion Amount"
+                                      data-id="amount" data-name="amount" data-discount
+                                      data-selection="DollarDiscount" class="hide" numeric="true" data-value="{amount}"></md-input>
+                            <md-input icon="awesome-percent" prefix="prefix" type="text" required placeholder="Required: Promotion Percentage"
+                                      data-id="percentage" data-name="percentage" data-discount
+                                      data-selection="PercentageDiscount" class="hide" numeric="true" max="100" data-value="{percentage}"></md-input>
+                        </div>
+
+                        <md-submit class="primary margin-top two" raised="true">Submit</md-submit>
+                </silicon-form>
+               {/promotion}
+               {^promotion}
+                    <p style="padding:1em;">There is no promotion currently associated with the requested id...</p>
+               {/promotion}
+        </main-panel>
+    </md-layout>
+</section>

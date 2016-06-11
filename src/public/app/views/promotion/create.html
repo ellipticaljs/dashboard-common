@@ -1,0 +1,65 @@
+<section class="full-white">
+    <md-bar>
+        <side-panel>
+
+        </side-panel>
+        <main-panel>
+            <h3>Create Promotion</h3>
+        </main-panel>
+    </md-bar>
+    <md-layout>
+        <side-panel class="border-right">
+            <nav-list>
+                <menu-item>
+                    <span class="icon-local-offer header primary accent"></span>
+                    <span></span>
+                </menu-item>
+                <menu-item>
+                    <span class="icon-search main icon"></span>
+                    <a href="/Promotion/List/1">Promotions</a>
+                </menu-item>
+            </nav-list>
+        </side-panel>
+        <main-panel class="padding" scroll>
+                <silicon-form class="md form-width" service="Discount" notify-service="Notify" success-message="Promotion Created">
+                    <form role="form" method="post" name="Discount" ea-bind="promotion">
+
+                        <input type="hidden" name="ruleType" value="subtotal">
+                        <md-input-validate required placeholder="Required: Promotion Code"
+                                  data-id="code" data-name="code" message="The promo code already exists"></md-input-validate>
+
+                        <flex-box class="align-center phone-flex">
+                            <md-checkbox data-id="expires" data-name="expires" label="Expires?" class="phone-margin-top"></md-checkbox>
+                            <md-datepicker class="md" icon="date-range" prefix="prefix" placeholder="Expiration Date" disabled
+                                           data-id="expirationDate" data-name="expirationDate"></md-datepicker>
+                        </flex-box>
+
+                        <md-textarea prefix="prefix" icon="edit" disable-resize="true" data-id="description" data-name="description"
+                                     label="Description"></md-textarea>
+
+                        <md-input icon="attach-money" prefix="prefix" type="text" placeholder="Minimum Shopping Bag Value"
+                                  data-id="minValue" data-name="minValue"></md-input>
+
+                        <md-select data-id="type" data-name="type" label="Required: Select Discount Type"
+                                   prefix="prefix" prefix-icon="local-offer">
+                            <select>
+                                <option value="select">Select</option>
+                                <option value="DollarDiscount">Dollar Discount</option>
+                                <option value="PercentageDiscount">Percentage Discount</option>
+                            </select>
+                        </md-select>
+
+                        <div class="input-element-container">
+                            <md-input icon="attach-money" prefix="prefix" type="text" required placeholder="Required: Promotion Amount"
+                                      data-id="amount" data-name="amount" data-discount
+                                      data-selection="DollarDiscount" class="hide" numeric="true" data-value="0"></md-input>
+                            <md-input icon="awesome-percent" prefix="prefix" type="text" required placeholder="Required: Promotion Percentage"
+                                      data-id="percentage" data-name="percentage" data-discount
+                                      data-selection="PercentageDiscount" class="hide" numeric="true" max="100" data-value="0"></md-input>
+                        </div>
+
+                        <md-submit class="primary margin-top two" raised="true">Submit</md-submit>
+                </silicon-form>
+        </main-panel>
+    </md-layout>
+</section>

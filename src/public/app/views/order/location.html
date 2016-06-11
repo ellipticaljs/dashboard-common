@@ -1,0 +1,41 @@
+<section class="full-white">
+    {>"shared.order.md-bar" /}
+    <md-layout ea-bind="user">
+        <side-panel class="border-right">
+            {#order}
+                <nav-list>
+                    <menu-item>
+                        <a href="/Order/Detail/{id}" class="flex-box align-center">
+                            <span class="icon-shop main icon"></span>
+                            <span class="hide-span-medium-down">#{id}</span>
+                        </a>
+                    </menu-item>
+                    <menu-item>
+                        <a href="/Order/List/1?$orderByDesc=OrderDate" class="flex-box align-center">
+                            <span class="icon-search main icon"></span>
+                            <span class="hide-span-medium-down">Orders</span>
+                        </a>
+                    </menu-item>
+                </nav-list>
+            {/order}
+            {^order}
+                <div class="primary-icon">
+                    <span class="icon-person"></span>
+                </div>
+            {/order}
+        </side-panel>
+        <main-panel scroll>
+            <style>
+                google-map{
+                    height:calc(100vh - 120px);
+                }
+            </style>
+            {#geo}
+                <google-map latitude="{lat}" longitude="{lng}"></google-map>
+            {/geo}
+            {^order}
+                <p style="padding:1em;">There is no order currently associated with the requested id...</p>
+            {/order}
+        </main-panel>
+    </md-layout>
+</section>

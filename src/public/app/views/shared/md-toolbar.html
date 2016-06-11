@@ -1,0 +1,30 @@
+<md-toolbar class="md tb">
+    <flex-box class="show-for-medium-down">
+        <span class="icon-menu" paper-drawer-toggle></span>
+    </flex-box>
+    <md-morph service="SearchMorphService" ea-bind="search">
+        <md-input-icon-button placeholder="Search..." data-name="search" data-id="search" icon="search" class="search-box" default></md-input-icon-button>
+        <span class="icon-arrow-back back-arrow hide" toggle data-role="back"></span>
+    </md-morph>
+    <flex-box class="icons" ea-bind="profile">
+     <a href="/Settings" data-settings>
+         <span class="icon-settings relative"></span>
+     </a>
+        <md-avatar data-class="size-30" default-url="/images/assets/default-avatar-white.png" camel-case="false" id="avatar-1" md-dropdown hover>
+            <md-dropdown class="profile">
+                <flex-box class="column profile-dropdown">
+                    <header>
+                        <span class="icon-supervisor-account"></span>
+                    </header>
+                    <flex-box class="center identity">
+                        <span data-profile-name></span>
+                    </flex-box>
+                    <flex-box class="center md blue sign-out">
+                          <a data-profile-link>Sign Out</a>
+                    </flex-box>
+                </flex-box>
+            </md-dropdown>
+        </md-avatar>
+        <span class="user" data-profile-name></span>
+    </flex-box>
+</md-toolbar>

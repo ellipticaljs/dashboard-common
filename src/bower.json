@@ -1,0 +1,42 @@
+{
+  "name": "mobile-first-dashboard",
+  "description": "mobile first dashboard prototype app",
+  "main": "public/index.html",
+  "authors": [
+    "S. Francis <sfrancis@misinteractive.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "prototype"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/ellipticaljs/mobile-first-dashboard/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "elliptical-polymer-behaviors": "~1.1.0",
+    "ui-components": "~1.1.1",
+    "md-components": "~1.0.5",
+    "elliptical-dom-event": "~1.0.14",
+    "elliptical-browser": "~1.0.24",
+    "md-fonts": "~1.0.2",
+    "elliptical-date-helpers": "~1.0.5",
+    "silicon-form": "~1.1.1",
+    "sass-animations": "~1.0.3",
+    "moment-import": "~1.0.0",
+    "jquery-ui-import": "~1.0.1",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.7",
+    "elliptical-notification": "~1.0.3",
+    "faker-import": "~1.0.0",
+    "elliptical-viewdata": "~1.0.3",
+    "google-map": "GoogleWebComponents/google-map#~1.1.10",
+    "md-select-lists": "~1.0.2"
+  }
+}

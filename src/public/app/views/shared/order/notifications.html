@@ -1,0 +1,17 @@
+<h3 class="margin-left">Notifications</h3>
+<md-table breakpoint="640" columns="3" alt-background="odd" class="orders">
+    <header>
+        <column-header>Type</column-header>
+        <column-header>Message</column-header>
+        <column-header>Date</column-header>
+    </header>
+    <section class="size-14">
+      {#orderStatus}
+        {#notifications}
+            <grid-item data-header="Type">{key}</grid-item>
+            <grid-item data-header="Desc">{value}</grid-item>
+            <grid-item data-header="Date">{@formatDate value="{date}" /}</grid-item>
+        {/notifications}
+      {/orderStatus}
+    </section>
+</md-table>

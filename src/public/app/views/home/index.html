@@ -1,0 +1,36 @@
+<section class="content stretch">
+    <paper-fab icon="add" class="md fab {fabHide} hide" ea-bind="fab" fab-type="dashboard"></paper-fab>
+    <db-breadcrumb icon="event">
+        <h4 class="db-header">Dashboard</h4>
+        <span class="date" data-id="date-range-2" class="hide"></span>
+    </db-breadcrumb>
+    <flex-box class="space-between flex-cards" ea-bind="cards">
+        <md-icon-card icon="group" class="users">
+            <h2 data-id="users"></h2>
+            <span>Users</span>
+        </md-icon-card>
+        <md-icon-card icon="shopping-cart" class="shopping">
+            <h2 data-id="orders"></h2>
+            <span>Orders</span>
+        </md-icon-card>
+        <md-icon-card icon="attach-money" class="sales">
+            <h2 data-id="sales"></h2>
+            <span>Sales</span>
+        </md-icon-card>
+        <md-icon-card icon="visibility" class="visits">
+            <h2 data-id="visits"></h2>
+            <span>Visits</span>
+        </md-icon-card>
+    </flex-box>
+    <md-grid-box>
+        <flex-box class="center dashboard-box">
+            <h1 class="{displayTitle}">{siteTitle}</h1>
+        </flex-box>
+        <md-column width-70>
+
+        </md-column>
+        <md-column width-30>
+
+        </md-column>
+    </md-grid-box>
+</section>

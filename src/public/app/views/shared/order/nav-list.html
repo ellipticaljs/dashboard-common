@@ -1,0 +1,55 @@
+{#order}
+    <nav-list data-id="{id}">
+        <menu-item>
+            <span class="icon-shop header primary accent large"></span>
+            <span></span>
+        </menu-item>
+        <menu-item action="delete" data-id="{id}">
+            <span class="icon-delete main icon"></span>
+            <span>Delete</span>
+        </menu-item>
+        <menu-item class="{@truthy value="{isAuthenticatedUser}" true="" false="hide" /}">
+            <a href="/UserOrder/List/{userId}/1" class="flex-box align-center">
+                <span class="icon-shop main icon"></span>
+                <span class="hide-span-medium-down">Order History</span>
+            </a>
+        </menu-item>
+        <menu-item>
+            <a href="/Order/Notify/{id}" class="flex-box align-center">
+                <span class="icon-notifications main icon"></span>
+                <span class="hide-span-medium-down">Notification</span>
+            </a>
+        </menu-item>
+        <menu-item>
+            <a href="/Order/Status/{id}" class="flex-box align-center">
+                <span class="icon-warning main icon"></span>
+                <span class="hide-span-medium-down">Status</span>
+            </a>
+        </menu-item>
+        <menu-item class="{@truthy value="{isAuthenticatedUser}" true="" false="hide" /}">
+            <a href="/User/Detail/{userId}" class="flex-box align-center">
+                <span class="icon-person main icon"></span>
+                <span class="hide-span-medium-down">Profile</span>
+            </a>
+        </menu-item>
+        <menu-item>
+            <a href="/Order/Location/{id}" class="flex-box align-center">
+                <span class="icon-location-on main icon"></span>
+                <span class="hide-span-medium-down">Location</span>
+            </a>
+        </menu-item>
+        <menu-item>
+            <a href="/Order/List/1?$orderByDesc=OrderDate" class="flex-box align-center">
+                <span class="icon-search main icon"></span>
+                <span class="hide-span-medium-down">Orders</span>
+            </a>
+        </menu-item>
+    </nav-list>
+{/order}
+{^order}
+    <nav-list>
+        <menu-item>
+            <span class="icon-shop header primary accent large"></span>
+        </menu-item>
+    </nav-list>
+{/order}

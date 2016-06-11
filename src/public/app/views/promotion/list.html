@@ -1,0 +1,51 @@
+<section class="full-white">
+    {>"shared.md-bar" barUrl="/Promotion/List/1" barNewUrl="/Promotion/Create/New" barNewTitle="New Promotion" barTitle="Promotion" barIcon="local-offer"  /}
+
+    <md-layout ea-bind="list" service="Discount" label="Promotion" item-selector="grid-item" detail-action="/Promotion/Detail/[id]">
+        <side-panel>
+
+            {>"shared.nav-list" navIcon="local-offer" navNewUrl="/Promotion/Create/New" /}
+
+        </side-panel>
+        <main-panel>
+            <md-grid class="" service="Sort" refresh-url="/Promotion/List/1" columns="7" breakpoint="900" alt-background="odd">
+                <header>
+                    <column-header empty></column-header>
+                    <column-header field="Code" sort="true">Code</column-header>
+                    <column-header field="Type">Type</column-header>
+                    <column-header field="Description">Description</column-header>
+                    <column-header field="ExpirationDate" sort="true">Expiration Date</column-header>
+                    <column-header>Amount</column-header>
+                    <column-header field="CreatedDate" sort="true">Created</column-header>
+                </header>
+                <section>
+                    {#promotions}
+                    <grid-item data-id="{code}" data-header="Select:">
+                        <md-checkbox md-id="cb{$idx}" data-id="{code}"></md-checkbox>
+                    </grid-item>
+                    <grid-item data-id="{code}" data-header="Code:"><a href="/Promotion/Detail/{code}" class="indigo">{code}</a></grid-item>
+                    <grid-item data-id="{code}" data-header="Type:">
+                        {@camelCaseToSentence value="{type}" /}
+                    </grid-item>
+                    <grid-item data-id="{code}" data-header="Description:">
+                      {description}
+                    </grid-item>
+                    <grid-item data-id="{code}" data-header="Expiration:">
+                       {@expirationDate value="{expirationDate}" expires="{expires}" /}
+                    </grid-item>
+                    <grid-item data-id="{code}" data-header="Amount:">
+                       {@displayAmount value="{amount}" percentage="{percentage}" /}
+                    </grid-item>
+                    <grid-item data-id="{code}" data-header="Created">{@formatDate value="{createdDate}" /}</grid-item>
+                    {/promotions}
+                </section>
+                <footer class="{@count value="{count}"  minLength="10" content="hide" /}">
+                    {>"shared.grid-pagination"/}
+                </footer>
+            </md-grid>
+            {^promotions}
+            <p style="padding:1em;">There are no promotions/discounts available...</p>
+            {/promotions}
+        </main-panel>
+    </md-layout>
+</section>

@@ -1,0 +1,14 @@
+<flex-box class="flex-end">
+    <flex-box class="total-box">
+        <div class="accent">Subtotal</div>
+        <div>{@extFormatCurrency value="{subtotal}" /}</div>
+        <div class="accent">Sales Tax</div>
+        <div>{@extFormatCurrency value="{tax}" /}</div>
+        <div class="accent">Shipping</div>
+        <div>{@extFormatCurrency value="{shipping}" /}</div>
+        <div class="accent">Discount</div>
+        <div class="discount">-{@extFormatCurrency value="{discount}" /}</div>
+        <div class="accent">Total</div>
+        <div class="total">{@extFormatCurrency value="{total}" /}</div>
+    </flex-box>
+</flex-box>

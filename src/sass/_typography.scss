@@ -1,0 +1,130 @@
+$typography-h-factor:.7 !default;
+$typography-margin-top-denominator:3 !default;
+$typography-margin-bottom-denominator:3.5 !default;
+
+$typography-h1: $typography-h-factor*4.2em !default;
+$typography-h2: $typography-h-factor*3.56em !default;
+$typography-h3: $typography-h-factor*2.92em !default;
+$typography-h4: $typography-h-factor*2.28em !default;
+$typography-h5: $typography-h-factor*1.64em !default;
+$typography-h6: 1em !default;
+
+$md-typography-content-font-family:'robotoregular';
+$md-typgraphy-content-hr-color:#d8d8d8;
+
+@mixin md-typography(){
+  .component-font{
+    font-family:map-deep-get($MD,font,regular);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1.1;
+    font-family:map-deep-get($MD,font,light);
+  }
+  // Header Styles
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+  h1 { font-size: $typography-h1; line-height: 110%; margin: ($typography-h1 / $typography-margin-top-denominator) 0 ($typography-h1 / $typography-margin-bottom-denominator) 0;}
+  h2 { font-size: $typography-h2; line-height: 110%; margin: ($typography-h2 / $typography-margin-top-denominator) 0 ($typography-h2 / $typography-margin-bottom-denominator) 0;}
+  h3 { font-size: $typography-h3; line-height: 110%; margin: ($typography-h3 / $typography-margin-top-denominator) 0 ($typography-h3 / $typography-margin-bottom-denominator) 0;}
+  h4 { font-size: $typography-h4; line-height: 110%; margin: ($typography-h4 / $typography-margin-top-denominator) 0 ($typography-h4 / $typography-margin-bottom-denominator) 0;}
+  h5 { font-size: $typography-h5; line-height: 110%; margin: ($typography-h5 / $typography-margin-top-denominator) 0 ($typography-h5 / $typography-margin-bottom-denominator) 0;}
+  h6 { font-size: $typography-h6; line-height: 110%; margin: ($typography-h6 / $typography-margin-top-denominator) 0 ($typography-h6 / $typography-margin-bottom-denominator) 0;}
+
+  [content]{
+    position: absolute;
+    font-family:$md-typography-content-font-family;
+    a{
+      position:relative;
+    }
+    //padding:$md-typography-content-padding;
+    width: 100%;
+    height: 100%;
+  }
+
+  hr {
+    border:0;
+    border-top:1px solid $md-typgraphy-content-hr-color;
+    clear: both;
+    margin: 1em 0;
+    height: 1px
+  }
+  .hover{
+    cursor:pointer;
+  }
+  [hover]{
+    cursor:pointer;
+  }
+  @content;
+
+}
+
+.roboto-light{
+  font-family:map-deep-get($MD,font,light);
+}
+.roboto-regular{
+  font-family:map-deep-get($MD,font,regular);
+}
+.roboto-medium{
+  font-family:map-deep-get($MD,font,medium);
+}
+
+h2,h3,h4,h5,h6{
+  &.medium{
+    @extend .roboto-medium;
+  }
+}
+
+@include md-typography();
+
+a{
+  &.secondary{
+    color:map-get($Color,secondary-accent);
+    background:none;
+    &:hover{
+      opacity:.7;
+    }
+  }
+  &.link{
+    color:map-deep-get($MD,color,blue,value);
+    &:hover{
+      opacity:.7;
+    }
+  }
+  &.indigo{
+    color:map-get($Color,main);
+    background:none;
+    &:hover{
+      opacity:.7;
+    }
+  }
+}
+.small-margin-right{
+  margin-right:.25em;
+}
+
+.status-open{
+  @extend .primary.accent;
+}
+
+.status-closed{
+  @extend .secondary.accent;
+}
+
+span.status{
+  padding:.2em .2em;
+  font-size:14px;
+  min-width:50px;
+  text-align:center;
+  &.open{
+    @extend .status-open;
+  }
+  &.closed{
+    @extend .status-closed;
+  }
+}
+
+.header-text{
+  margin-left:1em;
+  margin-bottom:2em;
+  color:map-get($Color,medium-grey);
+}

@@ -1,0 +1,34 @@
+<md-bar>
+    <side-panel>
+        <a {@href value="{barNewUrl}" /}>
+            <span class="icon-{barIcon} main icon ui-tooltip" data-title="{barNewTitle}" data-css="main-tooltip" ea-bind="tooltip"></span>
+        </a>
+        <span class="panel-title">{barTitle}</span>
+    </side-panel>
+    <main-panel>
+        <flex-box>
+            <a href="{barUrl}">
+                    <span class="icon-cached refresh ui-tooltip" data-title="Refresh" data-css="grey"
+                          ea-bind="tooltip"></span>
+            </a>
+          {#pagination}
+              <div class="labels">
+                  <span>{beginRecord}-{endRecord}</span>
+                  <span>of</span>
+                  <span class="accent" data-id="to-label" ea-bind="to-label">{count}</span>
+                  <span class="accent">{label}</span>
+              </div>
+          {/pagination}
+        </flex-box>
+        <md-button-group>
+          {#pagination}
+              <a href="{prevPage}">
+                  <span class="icon-chevron-left"></span>
+              </a>
+              <a href="{nextPage}">
+                  <span class="icon-chevron-right"></span>
+              </a>
+          {/pagination}
+        </md-button-group>
+    </main-panel>
+</md-bar>

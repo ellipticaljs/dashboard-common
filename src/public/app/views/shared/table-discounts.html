@@ -1,0 +1,35 @@
+<md-table class="order" breakpoint="900" alt-background="odd">
+    <header>
+        <column-header empty></column-header>
+        <column-header field="Code">Code</column-header>
+        <column-header field="Type">Type</column-header>
+        <column-header field="Description">Description</column-header>
+        <column-header field="ExpirationDate">Expiration Date</column-header>
+        <column-header>Amount</column-header>
+        <column-header field="CreatedDate">Created</column-header>
+    </header>
+    <section>
+      {#promotions}
+          <grid-item data-id="{id}" data-header="Select:">
+              <md-checkbox md-id="cb{$idx}" data-id="{id}"></md-checkbox>
+          </grid-item>
+          <grid-item data-id="{id}" data-header="Code:"><a href="/Promotion/Detail/{id}" class="indigo">{code}</a></grid-item>
+          <grid-item data-id="{id}" data-header="Type:">
+            {@camelCaseToSentence value="{type}" /}
+          </grid-item>
+          <grid-item data-id="{id}" data-header="Description:">
+            {description}
+          </grid-item>
+          <grid-item data-id="{id}" data-header="Expiration:">
+            {@expirationDate value="{expirationDate}" expires="{expires}" /}
+          </grid-item>
+          <grid-item data-id="{id}" data-header="Amount:">
+            {@displayAmount value="{amount}" percentage="{percentage}" /}
+          </grid-item>
+          <grid-item data-id="{id}" data-header="Created">{@formatDate value="{createdDate}" /}</grid-item>
+      {/promotions}
+    </section>
+    <footer class="{@count value="{count}"  minLength="10" content="hide" /}">
+      {>"shared.grid-pagination"/}
+    </footer>
+</md-table>
