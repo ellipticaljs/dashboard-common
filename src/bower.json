@@ -21,14 +21,14 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
-    "elliptical-polymer-behaviors": "~1.1.0",
-    "ui-components": "~1.1.1",
-    "md-components": "~1.0.5",
+    "elliptical-polymer-behaviors": "~1.2.1",
+    "ui-components": "~1.2.0",
+    "md-components": "~1.2.0",
     "elliptical-dom-event": "~1.0.14",
-    "elliptical-browser": "~1.0.24",
+    "elliptical-browser": "~1.1.0",
     "md-fonts": "~1.0.2",
     "elliptical-date-helpers": "~1.0.5",
-    "silicon-form": "~1.1.1",
+    "silicon-form": "~1.2.0",
     "sass-animations": "~1.0.3",
     "moment-import": "~1.0.0",
     "jquery-ui-import": "~1.0.1",
@@ -37,6 +37,6 @@
     "faker-import": "~1.0.0",
     "elliptical-viewdata": "~1.0.3",
     "google-map": "GoogleWebComponents/google-map#~1.1.10",
-    "md-select-lists": "~1.0.2"
+    "md-select-lists": "~1.2.0"
   }
 }
