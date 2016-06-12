@@ -84,7 +84,8 @@
         </side-panel>
         <main-panel class="padding" scroll>
             {#user}
-                <silicon-form class="md form-width" service="User" notify-service="Notify" success-message="User Updated">
+                <silicon-form class="md form-width" service="User" notify-service="Notify" location-service="Location"
+                              redirect-previous-location="true" success-message="User Updated">
                     <form role="form" method="put">
                         <input type="hidden" name="id" value="{id}">
                         <md-input icon="edit" prefix="prefix" type="text"

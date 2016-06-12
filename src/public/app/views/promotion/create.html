@@ -22,7 +22,7 @@
         </side-panel>
         <main-panel class="padding" scroll>
                 <silicon-form class="md form-width" service="Discount" notify-service="Notify" success-message="Promotion Created">
-                    <form role="form" method="post" name="Discount" ea-bind="promotion">
+                    <form role="form" method="post" name="Discount" ea-bind="promotion" location-service="Location" redirect-previous-location="true">
 
                         <input type="hidden" name="ruleType" value="subtotal">
                         <md-input-validate required placeholder="Required: Promotion Code"

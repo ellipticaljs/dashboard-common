@@ -25,7 +25,7 @@
         <main-panel class="padding" scroll>
               {#promotion}
                 <silicon-form class="md form-width" service="Discount" notify-service="Notify" success-message="Promotion Updated">
-                    <form role="form" method="put" name="Discount" ea-bind="promotion">
+                    <form role="form" method="put" name="Discount" ea-bind="promotion" location-service="Location" redirect-previous-location="true">
                         <input type="hidden" name="id" value="{id}">
                         <input type="hidden" name="ruleType" value="subtotal">
                         <md-input required data-id="code" data-name="code" readonly="true" data-value="{code}" label="code"></md-input>
