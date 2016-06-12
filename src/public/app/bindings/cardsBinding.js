@@ -1,7 +1,7 @@
 /// binds the Dashboard icon cards
 import elliptical from '../references/elliptical';
 import container from '../dependencies/container';
-import keys from '../modules/keys';
+import keys from '../references/keys';
 
 var EVENT_NAME = 'db.datapicker.change';
 

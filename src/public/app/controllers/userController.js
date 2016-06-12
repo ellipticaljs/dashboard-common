@@ -1,6 +1,6 @@
 import elliptical from '../references/elliptical';
 import container from '../dependencies/container';
-import keys from '../modules/keys';
+import keys from '../references/keys';
 import helper from '../modules/helper';
 import {Progress, Morph, Label} from '../modules/ui';
 
