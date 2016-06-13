@@ -80,7 +80,7 @@ export default class Controller extends elliptical.Controller {
         Progress.start();
         Morph.toggle();
         try {
-            let order = await Order.get({id});
+            let order = await Order.getAsync({id});
             let context = {order, user: {}};
             res.render(context);
         } catch (err) {
