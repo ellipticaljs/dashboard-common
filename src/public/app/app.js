@@ -34,7 +34,7 @@ app.configure(function () {
     app.use(elliptical.globalCallback(function (req, res, next) {
         var tokenCookie = req.cookies.token;
         if (!tokenCookie && req.route !== '/profile/login') {
-            Location.href = '/Profile/Login';
+            res.redirect('/Profile/Login');
         } else {
             next();
         }
