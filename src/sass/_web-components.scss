@@ -238,7 +238,7 @@ $list-color:map-get($Color,custom-900);
 @include md-bar(){
   &>side-panel{
     @include span-icon(){
-      font-size:28px;
+      font-size:24px;
     }
   }
   &>main-panel{
