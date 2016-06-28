@@ -94,15 +94,10 @@ elliptical.binding('list', function (node) {
 
         } else {
             var ids = _getIds(checked);
-            var funcArray = [];
-            ids.forEach(function (id) {
-                funcArray.push(function (callback) {
-                    Service.delete({id}, callback)
-                });
+            ids.forEach(async function (id) {
+                await Service.deleteAsync({id});
             });
-            Async(funcArray, (err, results)=> {
-                (err) ? notify.show('Error: Error deleting ' + label.toLowerCase() + '(s)') : onDeletions(ids, label + '(s) have been deleted', ids.length, notify);
-            });
+            onDeletions(ids, label + '(s) have been deleted', ids.length, notify);
         }
     }
 

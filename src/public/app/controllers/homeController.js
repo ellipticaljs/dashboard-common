@@ -1,5 +1,6 @@
 import elliptical from '../references/elliptical';
 import container from '../dependencies/container';
+import {Progress, Morph, Label} from '../modules/ui';
 
 var Settings = container.getType('Settings');
 
