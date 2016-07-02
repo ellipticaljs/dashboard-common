@@ -60,7 +60,6 @@ container.registerType('$Local', elliptical.$Local);
 container.registerType('$Cookie', $Cookie);
 container.registerType('$Session', $Session);
 container.registerType('DomEvent', DomEvent);
-container.registerType('Try', elliptical.Try);
 container.registerType('$ViewData', elliptical.$ViewData);
 container.registerType('Search', elliptical.Search);
 container.registerType('crypto', elliptical.crypto);
