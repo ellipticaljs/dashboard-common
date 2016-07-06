@@ -40,7 +40,7 @@ body{
 
 ///forms------------------------------------------------------
 @include md-forms($map:(primary:map-deep-get($MD,color,blue,value)));
-
+@import "forms";
 
 ///web components---------------------------------------------
 @import "web-components";//
