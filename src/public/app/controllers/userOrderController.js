@@ -27,7 +27,7 @@ export default class Controller extends elliptical.Controller {
             let pagination = orders.pagination;
             let count = pagination.count;
             let hide = (count > 0) ? '' : 'hide-important';
-            let context = {user, userId, orders, pagination, count, hide};
+            let context = {user, userId, orders:orders.data, pagination, count, hide};
             res.render(context);
         } catch (err) {
             next(err);
