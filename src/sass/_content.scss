@@ -13,7 +13,7 @@
 }
 
 [drawer]{
-  @extend .md.white;
+  @extend .md.white !optional;
   border-right:1px solid map-get($Color,disabled);
 }
 
@@ -111,7 +111,7 @@ main-panel{
 .order-details{
 
   h2,h3,h4,h5{
-    @extend .roboto-medium;
+    @extend .roboto-medium !optional;
     font-family:map-deep-get($MD,font,medium);
     &.margin-top-zero{
       margin-top:0;
@@ -132,15 +132,15 @@ main-panel{
     @include flexbox($justification:center);
     max-width:150px;
     &.open,&.Open{
-      @extend .status-open;
+      @extend .status-open !optional;
     }
     &.closed,&.Closed{
-      @extend .status-closed;
+      @extend .status-closed !optional;
     }
   }
   .order-total{
     padding:.5em;
-    @extend .app.custom;
+    @extend .app.custom !optional;
     @include flexbox($justification:center);
     font-size:18px;
     margin-top:.25em;
@@ -166,7 +166,7 @@ main-panel{
     padding: 1em;
     margin-right:1em;
     margin-top:1em;
-    @extend .md.elevation-1;
+    @extend .md.elevation-1 !optional;
     &>*{
       width:45%;
       &:nth-child(odd){
@@ -175,11 +175,11 @@ main-panel{
       padding-bottom:.5em;
     }
     .discount{
-      @extend .app.red.icon;
+      @extend .app.red.icon !optional;
     }
     .total{
       font-size:20px;
-      @extend .primary.icon;
+      @extend .primary.icon !optional;
     }
   }
 }
@@ -269,7 +269,7 @@ md-dropdown{
 
 .panel-title{
   font-size:18px;
-  @extend .roboto-medium;
+  @extend .roboto-medium !optional;
   margin-left: .5em;
   color: map-get($Color,custom-900);
   margin-bottom: .25em;
