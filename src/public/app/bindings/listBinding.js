@@ -57,8 +57,11 @@ elliptical.binding('list', function (node) {
     function onView(event) {
         var checked = _getMultiChecked();
         var id = checked[0].dataset.id;
-        var url = detailAction.replace('[id]', id);
-        Location.redirect(url);
+        var action=detailAction;
+        if(action){
+            var url = action.replace('[id]', id);
+            if(url) Location.redirect(url);
+        }
     }
 
     function _removeDisabledClass() {

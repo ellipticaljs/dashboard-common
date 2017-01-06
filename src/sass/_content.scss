@@ -30,8 +30,26 @@
   }
 }
 
+.hero-box{
+  color:mep-get($Color,medium-grey);
+  iron-icon{
+    width:64px;
+    height:64px;
+    color:map-get($Color,custom-1000);
+    margin-right:.5em;
+  }
+  h2,h3,h4{
+    margin:0;
+  }
+  @include align-items(center);
+}
 
-section.full-white{
+.panel-text{
+  color:map-get($Color,custom-900);
+}
+
+
+section.full-white,section.fill-white{
   min-height: 100%;
   height: 100%;
   background: map-get($Color,white);
@@ -52,7 +70,7 @@ section.full-white{
   overflow:hidden;
 }
 
-section.full{
+section.full,section.fill{
   min-height: 100%;
   height: 107%;
   width: 100%;
@@ -197,6 +215,7 @@ md-dropdown{
     min-height:200px;
   }
 }
+
 .profile-dropdown{
   width:100%;
   height:200px;
@@ -248,7 +267,7 @@ md-dropdown{
   position:relative;
   &:after{
     font-family:'material';
-    content:"\e7b0";
+    content:"\e9a3";
     color:#888;
     font-size:120px;
     top:45%;
