@@ -32,12 +32,16 @@ app.configure(function () {
     
     ///global callback to handle route authentication
     app.use(elliptical.globalCallback(function (req, res, next) {
-        var tokenCookie = req.cookies.token;
-        if (!tokenCookie && req.route !== '/profile/login') {
-            res.redirect('/Profile/Login');
-        } else {
-            next();
-        }
+       var tokenCookie = req.cookies.token;
+       var route=req.route;
+       if(route)route=route.toLowerCase();
+       else route='';
+       if (!tokenCookie && route !== '/profile/login') {
+         res.redirect('/Profile/Login');
+         next();
+       } else {
+         next();
+       }
     }));
 
     //app.router
