@@ -23,7 +23,11 @@ elliptical.binding('cards', function (node) {
     }
 
     function updateDom(err, data) {
-        if (err) return;
+        if (!data) data={};
+        if(!data.order) data.orders=0;
+        if(!data.sales) data.sales=0;
+        if(!data.users) data.users=0;
+        if(!data.visits) data.visits='N/A';
         var orders = $node.find('[data-id="orders"]');
         orders.text(data.orders);
         var sales = $node.find('[data-id="sales"]');
