@@ -1,21 +1,21 @@
 <md-menu ripple-color="rgb(153,153,153)" active-ripple-color="rgb(153,153,153)" ea-bind="menu" close-drawer="true">
     <menu-item>
-        <header><span class="icon-dashboard"></span><a href="/">Dashboard</a></header>
+        <header><iron-icon icon="dashboard"></iron-icon><a href="/">Dashboard</a></header>
     </menu-item>
     <menu-item>
-        <header class="dropdown"><span class="icon-shopping-cart"></span>Shop</header>
+        <header class="dropdown"><iron-icon icon="shop"></iron-icon>Shop</header>
         <menu-dropdown>
             <menu-item><a href="/Order/List/1?$orderByDesc=OrderDate">Orders</a></menu-item>
             <menu-item><a href="/Promotion/List/1">Promotions</a></menu-item>
         </menu-dropdown>
     </menu-item>
     <menu-item>
-        <header><span class="icon-settings"></span><a href="/Settings">Settings</a></header>
+        <header><iron-icon icon="settings"></iron-icon><a href="/Settings">Settings</a></header>
     </menu-item>
     <menu-item>
-        <header><span class="icon-people"></span><a href="/User/List/1">Users</a></header>
+        <header><iron-icon icon="social:person"></iron-icon><a href="/User/List/1">Users</a></header>
     </menu-item>
     <menu-item>
-        <header><span class="icon-help"></span><a href="/Help">Help</a></header>
+        <header><iron-icon icon="help"></iron-icon><a href="/Help">Help</a></header>
     </menu-item>
 </md-menu>
