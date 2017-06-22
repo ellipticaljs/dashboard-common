@@ -34,12 +34,13 @@ elliptical.binding('list', function (node) {
     var editItem = $node.find('[action="edit"]');
 
 
-    dom.event($(document), 'md.checkbox.change', onCheckboxChange);
+    dom.event($(document), 'md-checkbox-change', onCheckboxChange);
     dom.event(this.click, '[action="delete"]:not(.disabled)', onDelete);
     dom.event(this.click, '[action="view"]:not(.disabled)', onView);
     dom.event(this.click, '[action="edit"]:not(.disabled)', onView);
 
-    function onCheckboxChange(event, data) {
+    function onCheckboxChange(event) {
+        var data=event.detail;
         if (data.checked) _removeDisabledClass();
         else {
             if (!_multiChecked())_addDisabledClass();

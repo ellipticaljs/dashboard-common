@@ -8,15 +8,16 @@ elliptical.binding('promotion', function (node) {
     var Location = container.getType('Location');
     var DomEvent = container.getType('DomEvent');
     var dom = new DomEvent(node, this);
-    dom.event('md.checkbox.change', onCheckboxChange);
-    dom.event('md.select.change', onSelectChange);
-    dom.event('md.input.validate', onValidation);
+    dom.event('md-checkbox-change', onCheckboxChange);
+    dom.event('md-select-change', onSelectChange);
+    dom.event('md-input-validate', onValidation);
 
     var datepicker = node.querySelector('md-datepicker');
     var discounts = dom.find('[data-discount]');
     var validate = node.querySelector('md-input-validate');
 
-    function onCheckboxChange(event, data) {
+    function onCheckboxChange(event) {
+        var data=event.detail;
         if (data.checked) datepicker.enable();
         else {
             datepicker.disable();
@@ -24,13 +25,15 @@ elliptical.binding('promotion', function (node) {
         }
     }
 
-    function onSelectChange(event, data) {
+    function onSelectChange(event) {
+        var data=event.detail;
         var value = data.value;
         discounts.addClass('hide');
         dom.find('[data-selection="' + value + '"]').removeClass('hide');
     }
 
-    function onValidation(event, data) {
+    function onValidation(event) {
+        var data=event.detail;
         var code = data.value;
         DiscountValidate.get({code}, (err, data)=> {
             if (err)  validate.show('error');
