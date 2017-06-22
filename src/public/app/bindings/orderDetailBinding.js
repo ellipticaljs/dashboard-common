@@ -12,9 +12,9 @@ elliptical.binding('order-detail', function (node) {
     var editItem = $node.find('[action="edit"]');
     var DomEvent = container.getType('DomEvent');
     var dom = new DomEvent(node, this);
-    dom.event($(document), 'md.menu.url.404', onUrl404);
+    dom.event($(document), 'md-menu-url-404', onUrl404);
     dom.event(this.click, '[action="delete"]:not(.disabled)', onDelete);
-    dom.event($(document), 'md.radio.change', onStatusChange);
+    dom.event($(document), 'md-radio-change', onStatusChange);
 
     function onUrl404() {
 
@@ -47,7 +47,8 @@ elliptical.binding('order-detail', function (node) {
         editItem.addClass('disabled');
     }
 
-    async function onStatusChange(event, data) {
+    async function onStatusChange(event) {
+        var data=event.detail;
         var id = navList[0].dataset.id;
         var status = data.id;
         var orderStatus = $node.find('[order-status]');
