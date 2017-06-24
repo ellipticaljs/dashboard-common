@@ -128,3 +128,12 @@ span.status{
   margin-bottom:2em;
   color:map-get($Color,medium-grey);
 }
+
+.flex-header{
+  display:flex;
+  align-items: center;
+}
+
+paper-button>button{
+  text-transform: uppercase;
+}
