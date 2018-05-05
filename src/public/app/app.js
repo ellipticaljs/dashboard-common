@@ -38,7 +38,6 @@ app.configure(function () {
        else route='';
        if (!tokenCookie && route !== '/profile/login') {
          res.redirect('/Profile/Login');
-         next();
        } else {
          next();
        }
